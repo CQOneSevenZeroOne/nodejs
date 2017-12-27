@@ -31,3 +31,17 @@ req.on('end', function () {
 });
 ```
 
+# 路由
+
+> http://localhost:65000/public/index.js?name=abc&skill=ps
+
+|http|localhost|65000|/public/index.js|?name=abc&skill=ps|#maodian|
+|-|-|-|-|-|-|
+|协议|域名|端口号|路由|参数|锚点|
+|必须|必须|必须|可选|可选|可选|可选|
+
+路由就是获取资源的路径(资源包括html,css,js,json,jpg等静态资源)
+
+# 数据库
+
+
