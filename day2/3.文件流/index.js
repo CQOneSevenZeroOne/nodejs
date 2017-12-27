@@ -1,3 +1,4 @@
+// 获取文本
 var fs = require("fs");
 var data = '';
 
