@@ -35,7 +35,6 @@ http.createServer(function(req,res){
                 }))
             });
         break;
-
         case "/getAge":
             connection.query(`SELECT * FROM students where id = ${param.id}`, function (error, results, fields) {
                 if (error) throw error;
