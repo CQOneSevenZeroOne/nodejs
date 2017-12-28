@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <p></p>
+    </div>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $.ajax({
+            url:"http://localhost:6789/getName",
+            type:"GET",
+            data:{
+                id:2,
+                search:"name"
+            },
+            success:function(data){
+                // console.log(JSON.parse(data))
+                // var arr = JSON.parse(data);
+                // $("p").html(arr.arr[0].name)
+            }
+        })
+
+        $.ajax({
+            url:"http://localhost:6789/getAge",
+            type:"GET",
+            data:{
+                id:2,
+                search:"age"
+            },
+            success:function(data){
+                // console.log(JSON.parse(data))
+                // var arr = JSON.parse(data);
+                // $("p").html(arr.arr[0].name)
+            }
+        })
+    </script>
+</body>
+</html>
