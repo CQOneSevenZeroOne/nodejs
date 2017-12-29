@@ -65,9 +65,31 @@ npm install xxx --save
 npm install
 ```
 
-GET请求
-```js
 
+
+1. 引入express模块
+```js
+var express = require("express");
+```
+
+2. 实例化express
+```js
+var app = express();
+```
+
+3. 配置路由
+
+根据路由和请求方式来执行对应的回调逻辑
+```js
+app.get('/', function(req, res) {
+});
+app.post('/index', function(req, res) {
+});
+```
+
+4. 监听端口
+```js
+app.listen(3000)
 ```
 
 # jade模板引擎

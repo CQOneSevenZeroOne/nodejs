@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="uploadForm">
+        <input type="file" id="file" name="logo" multiple />
+        <input type="button" value="上传" onclick="upload()" />
+    </form>
+    <script src="./jquery.js"></script>
+    <script>
+        function upload() {
+            console.log($("#uploadForm")[0])
+            $.ajax({
+                url: "http://localhost:8899/upload",
+                type: "POST",
+                processData:false,
+                contentType:false,
+                cache:false,
+                data:new FormData($("#uploadForm")[0]),
+            })
+        }
+    </script>
+</body>
+
+</html>
