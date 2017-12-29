@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="chat" />
+    <button onclick="send()">发送</button>
+    <ul id="list"></ul>
+
+    <script src="js/socket.js"></script>
+    <script>
+        var socket = io("http://10.40.153.107:3000");
+
+        function send() {
+            var input = document.querySelector("#chat").value
+            socket.emit("sendMess", input)
+        }
+        socket.on("returnMess", function (data) {
+            //var html ;
+            //console.log(data)
+            document.querySelector("#list").innerHTML+=("<li>"+data+"</li>");
+        })
+    </script>
+</body>
+
+</html>
