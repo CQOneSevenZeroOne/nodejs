@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="name"></p>
+    <input id="chat" />
+    <button onclick="send()">发送</button>
+    <ul id="list"></ul>
+    <select id="select">
+    </select>
+    <button onclick="addUser()">添加用户</button>
+    <script src="js/socket.js"></script>
+    <script>
+        var socket = io("http://localhost:3333");
+        var name = prompt("用户名:","游客");
+        function addUser(){
+            console.log(name)
+            // 添加用户
+            socket.emit("addUser",{
+                name:name
+            })
+            document.querySelector("#name").innerHTML = name
+        }
+        function send() {
+            var input = document.querySelector("#chat").value
+            var select = document.querySelector("#select").value
+            socket.emit("sendMess", {
+                name:name,
+                // 发的消息
+                message:input,
+                id:select
+            })
+        }
+        socket.on("returnMess", function (data) {
+            console.log(data)
+            document.querySelector("#list").innerHTML += (`<li>用户:${data.name}   ${data.message}</li>`);
+        })
+        // 显示用户列表
+        socket.on("showUserList",function(data){
+            console.log(data)
+            var html = data.map(function(item){
+                return `
+                    <option value="${item.id}">${item.name}</option>
+                `
+            }).join("")
+            document.querySelector("#select").innerHTML = html
+        })
+    </script>
+</body>
+</html>
