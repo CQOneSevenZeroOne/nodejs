@@ -18,6 +18,11 @@ app.get('/', function(req, res) {
     console.log(req.query)
     res.send('hello world');
 });
+app.get('/laoyao', function(req, res) {
+    res.append("Access-Control-Allow-Origin","*");
+    console.log(req.query)
+    res.send('laoyaohenshuai');
+});
 app.post('/index', function(req, res) {
     res.append("Access-Control-Allow-Origin","*");
     console.log(req.body)
